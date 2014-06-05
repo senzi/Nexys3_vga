@@ -1,0 +1,14 @@
+NET "i_clk" LOC = V10;
+
+NET "rgb[0]" LOC = T7;
+NET "rgb[1]" LOC = R7;
+NET "rgb[2]" LOC = V6;
+NET "rgb[3]" LOC = T6;
+NET "rgb[4]" LOC = P8;
+NET "rgb[5]" LOC = N7;
+NET "rgb[6]" LOC = V7;
+NET "rgb[7]" LOC = U7;
+
+NET "vs" LOC = P7;
+NET "hs" LOC = N6;
+
