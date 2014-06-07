@@ -20,14 +20,20 @@ parameter [9:0]     porchright = 10'b1100010000;
    
 reg                 flag_up;
 reg                 flag_left;
-   
-   
+
+akalin akalin(
+	.clka(clk_25),
+	.addra(addr),
+	.douta(rom_dout)
+	);
+assign addr = ((v_count-box_y-15'd1)*15'd72+(h_count-box_x)); 
+
 always @(posedge clk_25)
 begin
 	if ((h_count >= box_x) & (h_count < box_x + box_width) & (v_count >= box_y) & (v_count < box_y + box_height))
-		rgb <= 8'hA5;
+		rgb <= rom_dout;
 	else if ((h_count >= porchleft) & (h_count < porchright) & (v_count >= porchtop) & (v_count < porchbottom))
-		rgb <= 8'hce;
+		rgb <= h_count[7:0];
 	else
 		rgb <= 8'b00000000;
 
