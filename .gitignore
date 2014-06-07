@@ -167,6 +167,7 @@ pip-log.txt
 ##############
 
 # intermediate build files
+*.bit
 *.tcl
 *.bgn
 *.bld
