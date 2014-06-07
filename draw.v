@@ -10,8 +10,8 @@ reg       [7:0]     rgb;
    
 reg       [9:0]     box_x;
 reg       [9:0]     box_y;
-parameter [6:0]     box_height = 7'b0100100;
-parameter [6:0]     box_width = 7'b0100100;
+parameter [6:0]     box_height = 7'b0111010;
+parameter [6:0]     box_width = 7'b0111010;
    
 parameter [9:0]     porchleft = 10'b0010010000;
 parameter [9:0]     porchtop = 10'b0000100100;
@@ -22,20 +22,21 @@ reg                 flag_up;
 reg                 flag_left;
 
 wire [7:0]  rom_dout; 
-wire [14:0] addr;
+wire [15:0] addr;
+//synthesis attribute box_type <akalin> "black_box" 
 akalin akalin(
 	.clka(clk_25),
 	.addra(addr),
 	.douta(rom_dout)
 	);
-assign addr = ((v_count-box_y-15'd1)*15'd72+(h_count-box_x)); 
+assign addr = ((v_count-box_y)*16'd72+(h_count-box_x+16'd1)); 
 
 always @(posedge clk_25)
 begin
 	if ((h_count >= box_x) & (h_count < box_x + box_width) & (v_count >= box_y) & (v_count < box_y + box_height))
 		rgb <= rom_dout;
 	else if ((h_count >= porchleft) & (h_count < porchright) & (v_count >= porchtop) & (v_count < porchbottom))
-		rgb <= h_count[7:0];
+		rgb <= 8'hce;
 	else
 		rgb <= 8'b00000000;
 
