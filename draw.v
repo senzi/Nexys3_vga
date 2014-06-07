@@ -10,8 +10,8 @@ reg       [7:0]     rgb;
    
 reg       [9:0]     box_x;
 reg       [9:0]     box_y;
-parameter [6:0]     box_height = 7'b0111010;
-parameter [6:0]     box_width = 7'b0111010;
+parameter [6:0]     box_height = 7'b1001000;
+parameter [6:0]     box_width = 7'b1001000;
    
 parameter [9:0]     porchleft = 10'b0010010000;
 parameter [9:0]     porchtop = 10'b0000100100;
@@ -29,7 +29,7 @@ akalin akalin(
 	.addra(addr),
 	.douta(rom_dout)
 	);
-assign addr = ((v_count-box_y)*16'd72+(h_count-box_x+16'd1)); 
+assign addr = ((v_count-box_y)*16'd72+(h_count-box_x)); 
 
 always @(posedge clk_25)
 begin
