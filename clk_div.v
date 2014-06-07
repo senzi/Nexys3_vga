@@ -7,7 +7,7 @@ output      clk_25;
 reg         clk_25;
 reg [1:0]   clkdiv;
 
-parameter   killclk = 2'b11;
+parameter   killclk = 2'b01;
 
 always @(posedge clk_in)
 	begin
