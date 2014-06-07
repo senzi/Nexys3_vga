@@ -36,25 +36,25 @@ module draw(clk_25, v_count, h_count, rgb);
          begin
             if (flag_left == 1'b0)
             begin
-               box_x <= box_x + 1;
-               if (box_x + box_width == porchright - 1)
+               box_x <= box_x + 1'b1;
+               if (box_x + box_width == porchright - 1'b1)
                   flag_left <= 1'b1;
             end
             else
             begin
-               box_x <= box_x - 1;
+               box_x <= box_x - 1'b1;
                if (box_x == porchleft)
                   flag_left <= 1'b0;
             end
             if (flag_up == 1'b0)
             begin
-               box_y <= box_y + 1;
-               if (box_y + box_height == porchbottom - 1)
+               box_y <= box_y + 1'b1;
+               if (box_y + box_height == porchbottom - 1'b1)
                   flag_up <= 1'b1;
             end
             else
             begin
-               box_y <= box_y - 1;
+               box_y <= box_y - 1'b1;
                if (box_y == porchtop)
                   flag_up <= 1'b0;
             end
