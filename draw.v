@@ -21,6 +21,8 @@ parameter [9:0]     porchright = 10'b1100010000;
 reg                 flag_up;
 reg                 flag_left;
 
+wire [7:0]  rom_dout; 
+wire [14:0] addr;
 akalin akalin(
 	.clka(clk_25),
 	.addra(addr),
